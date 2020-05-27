@@ -847,21 +847,23 @@
 				<div class="tab-pane hidden container is-fluid" id="schemas">
 
 					<div class='container is-fluid columns'>
-						<div class='column is-2 box'>
-							<aside id="drop-container" class="menu menu-small">
-								<ul id="schemaList" class="menu-list" role="menu" aria-labelledby="dropdownMenu">
-									<li class='dropdown-submenu' v-for="(schema,key) in openapi.components.schemas">
-										<a :href="schema.id" target="_self" v-on:click="showSchema(key)">{{key}}</a>
-										<ul>
-											<li v-for="(prop,pkey) in schema.properties">
-												<template v-if="(prop.type == 'object') || prop.$ref">
-													<a :href="prop.id" target="_self" v-on:click="showSchema(key)">{{pkey}}</a>
-												</template>
-											</li>
-										</ul>
-									</li>
-								</ul>
-							</aside>
+						<div class='column is-2'>
+                            <div class='box'>
+							    <aside id="drop-container" class="menu menu-small">
+							    	<ul id="schemaList" class="menu-list" role="menu" aria-labelledby="dropdownMenu">
+							    		<li class='dropdown-submenu' v-for="(schema,key) in openapi.components.schemas">
+							    			<a :href="schema.id" target="_self" v-on:click="showSchema(key)">{{key}}</a>
+							    			<ul>
+							    				<li v-for="(prop,pkey) in schema.properties">
+							    					<template v-if="(prop.type == 'object') || prop.$ref">
+							    						<a :href="prop.id" target="_self" v-on:click="showSchema(key)">{{pkey}}</a>
+							    					</template>
+							    				</li>
+							    			</ul>
+							    		</li>
+							    	</ul>
+							    </aside>
+                            </div>
 						</div>
 
 						<div class="column box">
